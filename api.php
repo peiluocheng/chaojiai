@@ -18,7 +18,7 @@ $params = file_get_contents("php://input");
 $params = json_decode($params, true) ?: $_POST;
 
 $data['title'] = $params['title'];
-$data['title'] = str_replace("\\n", " ", $params['title']);
+$data['title'] = str_replace(array("\r\n", "\r", "\n"), "。", $data['title']);
 $data['sk'] = $params['sk'];
 $ch = curl_init();
 $max_tokens = $params['max_tokens'] ?: 2048;
